@@ -1,14 +1,16 @@
 const { src, dest } = require('gulp');
-const scss = require('gulp-sass');
+const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const cleancss = require('gulp-clean-css');
 const sourcemap = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
+const plumber = require('gulp-plumber');
 
 module.exports = function styles() {
-    return src('src/scss/*.scss')
+    return src('src/sass/*.sass')
+    .pipe(plumber())
     .pipe(sourcemap.init())
-    .pipe(scss())
+    .pipe(sass())
     .pipe(autoprefixer({
         cascade: false
     }))

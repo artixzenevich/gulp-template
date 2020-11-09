@@ -11,10 +11,11 @@ function reloaded(cb) {
 
 module.exports = function serve() {
     server.init({
-        server: 'dev'
+        server: 'dev',
+        notify: false
     });
 
-    watch('src/scss/*.scss', series(style, reloaded));
+    watch('src/sass/*.sass', series(style, reloaded));
     watch('src/scripts/*.js', series(script, reloaded));
     watch('dev/*.html').on('change', server.reload);
 }
